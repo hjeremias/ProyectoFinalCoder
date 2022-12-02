@@ -1,0 +1,19 @@
+
+{% extends "Appcoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+ {% if jugadores %}
+
+ <ul>
+    {% for jugador in jugadores %}
+        <p>Nombre: {{jugador.nombre}}</p>
+        <p>Club: {{jugador.equipo}}</p>
+        {% endfor %}
+ </ul>
+
+ {% endif %}
+
+{% endblock %}
