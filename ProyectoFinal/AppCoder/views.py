@@ -16,22 +16,20 @@ def inicio(request):
 #     return render(request, 'AppCoder/Equipo.html')
 
 def Carga(request):
-      if request.method == "POST":
-      # Aqui me llega la informacion del html
-            equipoFormulario = EquipoForm(request.POST)
-
-            if equipoFormulario.is_valid:
-                  informacion = equipoFormulario.cleaned_data
-                  jugador = Equipo(nombre=informacion['nombre'], dt=informacion['dt'])
-                  jugador.save()
-                  return render(request, "AppCoder/inicio.html")
-            else:
-                  equipoFormulario = EquipoForm()
-    
-      else:
-            equipoFormulario = EquipoForm()
-    
-      return render(request, "AppCoder/Carga.html", {"equipoFormulario": equipoFormulario})
+    if request.method == 'POST':
+        form1 = EquipoForm(request.POST)
+        form2 = JugadorForm(request.POST)
+        if form1.is_valid() and form2.is_valid():
+            nombre1 = form1.cleaned_data['nombre']
+            equipo = form1.cleaned_data['equipo']
+            nombre2 = form2.cleaned_data['nombre']
+            dt = form2.cleaned_data['dt']
+            # guardar los datos en la base de datos 
+            return HttpResponse("Datos guardados correctamente")
+    else:
+        form1 = EquipoForm()
+        form2 = JugadorForm()
+    return render(request, 'AppCoder/Carga.html', {'form1': form1, 'form2': form2})
 
 
 def Jugadores(request):
