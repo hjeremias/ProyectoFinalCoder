@@ -15,24 +15,23 @@ def inicio(request):
 #def Equipos(request):
 #     return render(request, 'AppCoder/Equipo.html')
 
-def Equipos(request):
+def Carga(request):
       if request.method == "POST":
       # Aqui me llega la informacion del html
-            miFormulario = EquipoForm(request.POST)
-            #print(miFormulario)
+            equipoFormulario = EquipoForm(request.POST)
 
-            if miFormulario.is_valid:
-                  informacion = miFormulario.cleaned_data
+            if equipoFormulario.is_valid:
+                  informacion = equipoFormulario.cleaned_data
                   jugador = Equipo(nombre=informacion['nombre'], dt=informacion['dt'])
                   jugador.save()
                   return render(request, "AppCoder/inicio.html")
             else:
-                  miFormulario = EquipoForm()
+                  equipoFormulario = EquipoForm()
     
       else:
-            miFormulario = EquipoForm()
+            equipoFormulario = EquipoForm()
     
-      return render(request, "AppCoder/Equipo.html", {"miFormulario": miFormulario})
+      return render(request, "AppCoder/Carga.html", {"equipoFormulario": equipoFormulario})
 
 
 def Jugadores(request):
@@ -71,6 +70,6 @@ def buscar (request):
 
       #respuesta = f"Estoy buscando el jugador: {request.GET['nombre']}"
 
-      return HttpResponse(respuesta)
+      #return HttpResponse(respuesta)
 
 
