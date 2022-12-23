@@ -12,50 +12,51 @@ def inicio(request):
       return render(request, 'AppCoder/inicio.html')
 
 
-#def Equipos(request):
-#     return render(request, 'AppCoder/Equipo.html')
-
-def Carga(request):
-    if request.method == 'POST':
-        form1 = EquipoForm(request.POST)
-        form2 = JugadorForm(request.POST)
-        if form1.is_valid() and form2.is_valid():
-            nombre1 = form1.cleaned_data['nombre']
-            equipo = form1.cleaned_data['equipo']
-            nombre2 = form2.cleaned_data['nombre']
-            dt = form2.cleaned_data['dt']
-            # guardar los datos en la base de datos 
-            return HttpResponse("Datos guardados correctamente")
-    else:
-        form1 = EquipoForm()
-        form2 = JugadorForm()
-    return render(request, 'AppCoder/Carga.html', {'form1': form1, 'form2': form2})
-
-
-def Jugadores(request):
+def CargaEquipo(request):
+      
       if request.method == "POST":
       # Aqui me llega la informacion del html
-            miFormulario = JugadorForm(request.POST)
+            equipoFormulario = EquipoForm(request.POST)         
+
+            if equipoFormulario.is_valid:
+                  informacion = equipoFormulario.cleaned_data
+                  equipo = Equipo(nombre=informacion['nombreEquipo'], dt=informacion['dt'])
+                  equipo.save()
+
+                  return render(request, "AppCoder/inicio.html")
+            else:
+                  equipoFormulario = EquipoForm()
+    
+      else:
+            equipoFormulario = EquipoForm()
+    
+      return render(request, "AppCoder/CargaEquipo.html", {"equipoFormulario": equipoFormulario})
+
+
+def CargaJugador(request):
+      if request.method == "POST":
+      # Aqui me llega la informacion del html
+            jugadorFormulario = JugadorForm(request.POST)
             #print(miFormulario)
 
-            if miFormulario.is_valid:
-                  informacion = miFormulario.cleaned_data
+            if jugadorFormulario.is_valid:
+                  informacion = jugadorFormulario.cleaned_data
                   jugador = Jugador(nombre=informacion['nombre'], equipo=informacion['equipo'])
                   jugador.save()
                   return render(request, "AppCoder/inicio.html")
             else:
-                  miFormulario = JugadorForm()
+                  jugadorFormulario = JugadorForm()
     
       else:
-            miFormulario = JugadorForm()
+            jugadorFormulario = JugadorForm()
     
-      return render(request, "AppCoder/Jugador.html", {"miFormulario": miFormulario})
+      return render(request, "AppCoder/CargaJugador.html", {"jugadorFormulario": jugadorFormulario})
 
 
 def busquedaJugador(request):
       return render (request, "AppCoder/busquedaJugador.html")
 
-def buscar (request):
+def BuscarJugador (request):
       
       if request.GET["nombre"]:
             nombre = request.GET ['nombre']
@@ -66,8 +67,18 @@ def buscar (request):
       else:
             return render (request, "AppCoder/busquedaJugador.html")
 
-      #respuesta = f"Estoy buscando el jugador: {request.GET['nombre']}"
-
-      #return HttpResponse(respuesta)
 
 
+def BusquedaEquipos(request):
+      return render (request, "AppCoder/BuscarEquipo.html")
+
+     
+def BuscarEquipo(request):
+      if request.GET["nombre"]:
+            nombre = request.GET ['nombre']
+            equipos = Equipo.objects.filter(nombre__icontains = nombre)
+
+            return render (request, "AppCoder/ResultadoBusquedaEquipos.html", {"equipos":equipos, "nombre": nombre})
+      
+      else:
+            return render (request, "AppCoder/BuscarEquipo.html")

@@ -3,9 +3,11 @@ from AppCoder import views
 
 urlpatterns = [
     path('', views.inicio, name="Inicio"),
-    path('Carga', views.Carga, name="Carga"),
-    path('Jugador', views.Jugadores, name="Jugador"),
+    path('CargaEquipo', views.CargaEquipo, name="CargaEquipo"),
+    path('CargaJugador', views.CargaJugador, name="CargaJugador"),
     path('BusquedaJugador', views.busquedaJugador, name = 'BusquedaJugador'),
-    path('buscar/', views.buscar)
+    path('BusquedaEquipo', views.BusquedaEquipos, name = 'BusquedaEquipo'),
+    path('buscarJugador/', views.BuscarJugador),
+    path('BuscarEquipo/', views.BuscarEquipo)
 ]
 

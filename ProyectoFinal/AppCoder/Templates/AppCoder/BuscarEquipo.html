@@ -1,0 +1,15 @@
+
+{% extends "Appcoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+<form action="/AppCoder/BuscarEquipo/"    method="GET"> 
+<p>Buscar un equipo:</p>
+Nombre: <input type="string" name='nombre' id='nombre'>
+<br><br><input type="submit" value ="Buscar">
+<button type="button">Volver a buscar</button>
+</form>   
+
+{% endblock %}

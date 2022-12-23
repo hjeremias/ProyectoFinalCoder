@@ -1,0 +1,19 @@
+{% extends "Appcoder/padre.html" %}
+
+    {% load static %}
+
+{% block contenido %}
+
+<h1>Ingresar datos de equipos a la base de datos</h1>
+<br>
+
+<center>
+<form action=""    method="post"> {% csrf_token %}
+    <table>
+        {{equipoFormulario.as_table}}
+    </table><br>
+    <input type="submit", value="Enviar">
+ </form>   
+ <center>
+
+{% endblock %}
