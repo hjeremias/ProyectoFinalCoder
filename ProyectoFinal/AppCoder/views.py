@@ -19,7 +19,7 @@ def CargaEquipo(request):
             equipoFormulario = EquipoForm(request.POST)         
 
             if equipoFormulario.is_valid:
-                  informacion = equipoFormulario.cleaned_data
+                  informacion = equipoFormulario.data
                   equipo = Equipo(nombre=informacion['nombreEquipo'], dt=informacion['dt'])
                   equipo.save()
 
@@ -40,7 +40,7 @@ def CargaJugador(request):
             #print(miFormulario)
 
             if jugadorFormulario.is_valid:
-                  informacion = jugadorFormulario.cleaned_data
+                  informacion = jugadorFormulario.data
                   jugador = Jugador(nombre=informacion['nombre'], equipo=informacion['equipo'])
                   jugador.save()
                   return render(request, "AppCoder/inicio.html")
