@@ -8,12 +8,14 @@
 <br>
 
 <center>
+    
 <form action=""    method="post"> {% csrf_token %}
     <table>
         {{jugadorFormulario.as_table}}
     </table><br>
     <input type="submit", value="Enviar">
  </form>   
+  
  <center>
 
 {% endblock %}

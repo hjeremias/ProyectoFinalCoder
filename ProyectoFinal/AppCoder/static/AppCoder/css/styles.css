@@ -89,6 +89,23 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.enlace-destacado {
+  color: red;
+  font-weight: bold;
+}
+
+.mi-clase {
+  list-style: none;
+}
+
+.desplegablenav-menu{
+  display: none;
+}
+
+.desplegablenav:hover .desplegablenav-menu {
+  display: block;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -11303,10 +11320,13 @@ textarea.form-control-lg {
 header.masthead {
   position: relative;
   background-color: #343a40;
-  background: url("../assets/img/bg-masthead.jpg") no-repeat center center;
+  background: url("../assets/img/Pasto.jpg") no-repeat center center fixed;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 header.masthead:before {
   content: "";
@@ -11359,7 +11379,7 @@ header.masthead h1, header.masthead .h1 {
 .call-to-action {
   position: relative;
   background-color: #343a40;
-  background: url("../assets/img/bg-masthead.jpg") no-repeat center center;
+  background: url("../assets/img/Pasto.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 7rem;
   padding-bottom: 7rem;

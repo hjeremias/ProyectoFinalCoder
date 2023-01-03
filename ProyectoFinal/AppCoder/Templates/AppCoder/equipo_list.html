@@ -1,0 +1,22 @@
+{% extends "Appcoder/padre.html" %}
+
+    {% load static %}
+
+{% block contenido %}
+
+<h1>Listado de equipos</h1>
+<ul>
+    {% for equipo in equipo_list %}
+
+
+        <p>Nombre: {{equipo.nombre}}</p>
+        <p>
+            <a href="{% url 'DetalleEquipo' equipo.id %}"> <button type="button">Ver</button> </a>
+            <a href="{% url 'UpdateEquipo' equipo.id %}"> <button type="button">Editar</button> </a>
+            <a href="{% url 'DeleteEquipo' equipo.id %}"> <button type="button">Borrar</button> </a>
+        </p>
+
+    {% endfor %}
+</ul>
+
+{% endblock %}

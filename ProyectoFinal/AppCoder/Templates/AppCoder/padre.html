@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
+
     <head>
 
-        {% load static %}
+
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -18,15 +20,47 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
     </head>
-    <body>
+    <body> 
+
+    <style>
+    .dropdown-menu {
+        display: none;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    </style>
+    
        
     <nav class="navbar navbar-light bg-light static-top">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
-            <a class="navbar-brand" href="{% url 'CargaEquipo' %}">Cargar datos</a>
-            <a class="navbar-brand" href="{% url 'CargaJugador' %}">Jugadores</a>
-            <a class="navbar-brand" href="{% url 'BusquedaJugador' %}">Buscar Jugadores</a>
-            <a class="navbar-brand" href="{% url 'BusquedaEquipo' %}">Buscar Equipos</a>
+            <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>  
+            <a class="navbar-brand" href="{% url 'ListJug' %}">Jugadores</a>            
+            <a class="navbar-brand" href="{% url 'ListEquipo' %}">Equipos</a>    
+            <a class="navbar-brand" href="{% url 'CargaJugador' %}">Nuevo Jugador</a>    
+            <a class="navbar-brand" href="{% url 'CargaEquipo' %}">Nuevo Equipo</a>    
+                   
+          
+            <!-- <li class="dropdown" list-style-none>
+                <a href="#" data-toggle="dropdown">Jugadores</a>
+                <div class="dropdown-menu">
+                    <a class="navbar-brand" href="{% url 'BusquedaJugador' %}">Buscar Jugadores</a>
+                    <a class="navbar-brand" href="{% url 'CargaJugador' %}">Cargar Jugador</a>
+                    <a class="navbar-brand" href="{% url 'CargaJugador' %}">Modificar Jugador</a>
+                    <a class="navbar-brand" href="{% url 'CargaJugador' %}">Eliminar Jugador</a>
+                </div>
+            </li>
+            <li class="dropdown" list-style-none>
+                <a href="#" data-toggle="dropdown">Equipos</a>
+                <div class="dropdown-menu">
+                    <a class="navbar-brand" href="{% url 'CargaEquipo' %}">Cargar Equipo</a>
+                    <a class="navbar-brand" href="{% url 'BusquedaEquipo' %}">Buscar Equipos</a>
+                    <a class="navbar-brand" href="{% url 'CargaJugador' %}">Modificar Equipo</a>
+                    <a class="navbar-brand" href="{% url 'CargaJugador' %}">Eliminar Equipo</a>
+                </div>
+            </li> -->
+
         </div>
     </nav>
 

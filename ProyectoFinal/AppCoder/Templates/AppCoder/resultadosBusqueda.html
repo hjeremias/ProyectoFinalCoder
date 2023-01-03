@@ -7,12 +7,24 @@
 
  {% if jugadores %}
 
- <ul>
-    {% for jugador in jugadores %}
+<center>
+    <ul>
+        {% for jugador in jugadores %}
+
         <p>Nombre: {{jugador.nombre}}</p>
         <p>Club: {{jugador.equipo}}</p>
-        {% endfor %}
- </ul>
+        <p>Edad: {{jugador.calcular_edad}}</p>
+        <p>Posicion: {{jugador.posicion}}</p>
+        <br><br>
+
+            {% endfor %}
+     </ul>
+    
+    <a href="{% url 'BusquedaJugador' %}">
+    <button type="button">Volver a buscar</button>
+    </a>
+</center>
+
 
  {% endif %}
 

@@ -1,0 +1,12 @@
+{% extends "Appcoder/padre.html" %}
+
+    {% load static %}
+
+{% block contenido %}
+
+<form method="post">{% csrf_token %}
+    Se borrará el jugador "{{jugador.nombre}}".
+    <input  type="submit" value = 'Borrar'/>
+</form>
+
+{% endblock %}

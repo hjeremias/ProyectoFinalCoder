@@ -1,0 +1,22 @@
+{% extends "Appcoder/padre.html" %}
+
+    {% load static %}
+
+{% block contenido %}
+
+<h1>Listado de jugadores</h1>
+<ul>
+    {% for jugador in jugador_list %}
+
+
+        <p>Nombre: {{jugador.nombre}}</p>
+        <p>
+            <a href="{% url 'DetalleJug' jugador.id %}"> <button type="button">Ver</button> </a>
+            <a href="{% url 'UpdateJug' jugador.id %}"> <button type="button">Editar</button> </a>
+            <a href="{% url 'DeleteJug' jugador.id %}"> <button type="button">Borrar</button> </a>
+        </p>
+
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "Appcoder/padre.html" %}
+
+    {% load static %}
+
+{% block contenido %}
+
+<p>Nombre: <i> {{jugador.nombre}} </i></p>
+<p>Posicion: <i> {{jugador.posicion}} </i></p>
+<p>Equipo: <i> {{jugador.equipo}} </i></p>
+<p>Edad: <i> {{jugador.calcular_edad}} </i></p>
+<p>
+    <a href="{% url 'ListJug'%}"> <button type="button">Volver</button> </a>   
+</p>
+
+{% endblock %}
